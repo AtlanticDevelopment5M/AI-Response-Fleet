@@ -29,14 +29,29 @@ CreateThread(function()
   })
 end)
 
--- Respawn effect
-RegisterNetEvent('arp_coroner:respawn', function()
-  local ped = PlayerPedId()
-  local coords = GetEntityCoords(ped)
-  local heading = GetEntityHeading(ped)
-  DoScreenFadeOut(500); while not IsScreenFadedOut() do Wait(0) end
-  NetworkResurrectLocalPlayer(coords.x, coords.y, coords.z, heading, true, true, false)
-  ClearPedTasksImmediately(ped); ClearPedBloodDamage(ped)
-  SetEntityHealth(ped, 200); SetPlayerInvincible(PlayerId(), false)
-  Wait(250); DoScreenFadeIn(700)
+-- Respawn the local player at a specific hospital
+RegisterNetEvent('arp_coroner:respawnAtHospital', function(hCoords, hHeading, label)
+    local ped = PlayerPedId()
+    local coords = hCoords or GetEntityCoords(ped)
+    local heading = hHeading or GetEntityHeading(ped)
+
+    DoScreenFadeOut(500)
+    while not IsScreenFadedOut() do Wait(0) end
+
+    -- Safety: clear death state and resurrect at hospital
+    NetworkResurrectLocalPlayer(coords.x, coords.y, coords.z, heading, true, true, false)
+    ClearPedTasksImmediately(ped)
+    ClearPedBloodDamage(ped)
+    SetEntityHealth(ped, 200)
+    SetPlayerInvincible(PlayerId(), false)
+
+    if label then
+        BeginTextCommandThefeedPost('STRING')
+        AddTextComponentSubstringPlayerName(('~b~Admitted to %s'):format(label))
+        EndTextCommandThefeedPostTicker(false, true)
+    end
+
+    Wait(250)
+    DoScreenFadeIn(700)
 end)
+
