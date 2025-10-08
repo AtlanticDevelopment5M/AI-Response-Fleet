@@ -211,6 +211,16 @@ RegisterNetEvent('arp_ai:request:tow', function(targetNetId)
   local truckModel = (C.TowMode == 'hook') and (C.HookModel or 'towtruck2') or (C.FlatbedModel or 'flatbed')
   local truck = U.spawnVehicle(truckModel, spawnAt, heading, true)
   if not truck then return end
+
+    local netId = NetworkGetNetworkIdFromEntity(truck)
+if Config.Blips and Config.Blips.Tow and Config.Blips.Tow.enabled then
+  addBlipFor(src, netId, Config.Blips.Tow)
+end
+
+SetTimeout((C.DriveAwaySeconds or 10) * 1000, function()
+  removeBlipFor(src, netId)
+end)
+
   local driver = U.spawnPed(C.DriverModel or 's_m_m_trucker_01', spawnAt, heading, truck)
 
   -- Attach target vehicle (basic flow; you can replace with your own)
