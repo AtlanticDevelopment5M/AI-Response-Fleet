@@ -3,6 +3,8 @@
 --  Spawns an AI coroner (cvan) that bags a body and respawns target
 --  Trigger via /coroner (playerid) or ox_target (handled client-side)
 -- =========================================================
+local Config = Config.Coroner
+
 
 -- ============= NOTIFY BRIDGE =============================
 -- Uses Forge Chat if present, falls back to chat:addMessage
