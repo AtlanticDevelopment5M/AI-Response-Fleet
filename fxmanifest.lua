@@ -9,7 +9,7 @@ description 'Unified Tow + Transport + Coroner with shared config & helpers'
 
 shared_scripts {
   'config.lua',
-  'utils.lua'
+  'shared/utils.lua'
 }
 
 client_scripts {

@@ -1,7 +1,7 @@
 
 -- ===== Coroner =====
 -- server/main.lua
-local U = require 'shared/utils'
+local U = require 'shared.utils'
 
 local function addBlipFor(src, netId, optic)
   TriggerClientEvent('arp_ai:blip:add', src, netId, optic or {})
