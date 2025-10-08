@@ -23,6 +23,35 @@ Config.Notify = function(src, msg, title, color)
     end
 end
 
+Config.Blips = {
+  Coroner = {
+    enabled = true,
+    sprite = 153,     -- medical bag (or 80 ambulance, etc.)
+    color  = 3,       -- light blue
+    scale  = 0.85,
+    label  = "Coroner",
+    flashOnCreateMs = 4000,   -- 0 to disable flashing
+    showRoute = false         -- set true if you want a GPS route
+  },
+  Transport = {
+    enabled = true,
+    sprite = 56,      -- police car
+    color  = 29,      -- blue
+    scale  = 0.9,
+    label  = "Prisoner Transport",
+    flashOnCreateMs = 3000,
+    showRoute = false
+  },
+  Tow = {
+    enabled = true,
+    sprite = 68,      -- tow truck
+    color  = 5,       -- yellow
+    scale  = 0.9,
+    label  = "Tow Truck",
+    flashOnCreateMs = 3000,
+    showRoute = false
+  }
+}
 
 ---------------------------------------------------
 -- 🚓 TRANSPORT SERVICE
