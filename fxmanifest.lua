@@ -15,7 +15,8 @@ shared_scripts {
 client_scripts {
   'client/coroner_client.lua',
   'client/transport_client.lua',
-  'client/tow_client.lua'
+  'client/tow_client.lua',
+  'client/blips.lua'
 }
 
 server_scripts {
