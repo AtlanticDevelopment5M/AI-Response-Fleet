@@ -78,5 +78,22 @@ function M.driveAndCleanup(ped, veh, to, speed, drivingStyle, secondsBeforeDelet
   end)
 end
 
+function M.nearestHospital(hospitals, fromCoords)
+    local best, bestDist
+    for _, h in ipairs(hospitals or {}) do
+        local d = #(fromCoords - h.coords)
+        if not bestDist or d < bestDist then bestDist, best = d, h end
+    end
+    return best
+end
+
+function M.playAnim(ped, dict, name, flag, speed)
+    RequestAnimDict(dict)
+    local timeout = GetGameTimer() + 8000
+    while not HasAnimDictLoaded(dict) and GetGameTimer() < timeout do Wait(0) end
+    TaskPlayAnim(ped, dict, name, speed or 1.0, speed or 1.0, -1, flag or 1, 0.0, false, false, false)
+end
+
+
 return M
 
