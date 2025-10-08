@@ -8,8 +8,8 @@ version '1.0.0'
 description 'Unified Tow + Transport + Coroner with shared config & helpers'
 
 shared_scripts {
-  'shared/config.lua',
-  'shared/utils.lua'
+  'config.lua',
+  'utils.lua'
 }
 
 client_scripts {
