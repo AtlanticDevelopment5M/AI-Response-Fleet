@@ -3,6 +3,15 @@
 -- server/main.lua
 local U = require 'shared/utils'
 
+local function addBlipFor(src, netId, optic)
+  TriggerClientEvent('arp_ai:blip:add', src, netId, optic or {})
+end
+
+local function removeBlipFor(src, netId)
+  TriggerClientEvent('arp_ai:blip:remove', src, netId)
+end
+
+
 -- ===== Coroner with body bag + cop animation + nearest-hospital respawn =====
 RegisterNetEvent('arp_ai:request:coroner', function(targetId)
     local src = source
