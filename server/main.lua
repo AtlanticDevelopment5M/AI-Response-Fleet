@@ -1,4 +1,3 @@
-local U = require 'shared/utils'
 
 -- ===== Coroner =====
 -- server/main.lua
