@@ -1,3 +1,5 @@
+local Config = Config.Coroner
+
 local function dbg(msg)
   if Config.debug then print(('[arp_coroner] %s'):format(msg)) end
 end
