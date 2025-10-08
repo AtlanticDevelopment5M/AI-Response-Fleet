@@ -176,6 +176,14 @@ RegisterNetEvent('arp_ai:request:transport', function(targetId)
   local veh = U.spawnVehicle(C.Vehicle.model or 'police', spawnAt, heading, C.Vehicle.sirensOn)
   if not veh then return end
   U.applyVehicleSetup(veh, C.Vehicle)
+local netId = NetworkGetNetworkIdFromEntity(veh)
+if Config.Blips and Config.Blips.Transport and Config.Blips.Transport.enabled then
+  addBlipFor(src, netId, Config.Blips.Transport)
+end
+
+SetTimeout((C.DriveAwaySeconds or 10) * 1000, function()
+  removeBlipFor(src, netId)
+end)
 
   local ped = U.spawnPed(C.Officer.model or 'mp_m_freemode_01', spawnAt, heading, veh)
   -- (Optional) apply MP freemode components/props here if desired
