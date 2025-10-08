@@ -88,6 +88,26 @@ Config.Transport = {
 -- ⚰️ CORONER SERVICE
 ---------------------------------------------------
 Config.Coroner = {
+-- === NEW: Hospital list & body bag ===
+Hospitals = {
+  -- Add/adjust as needed
+  { coords = vector3(  295.0, -1446.0, 29.8), heading = 45.0,  label = "Pillbox Hill" },
+  { coords = vector3( -449.0,  -340.0, 34.5), heading = 80.0,  label = "Mount Zonah" },
+  { coords = vector3( 1151.0,  -1528.0, 34.8), heading = 10.0, label = "Central LS" },
+  { coords = vector3( -874.0,  -307.0, 39.6), heading = 116.0, label = "Portola" },
+},
+
+BagModel = 'prop_body_bag_01',
+
+-- Where to load the bag on the vehicle (relative to van entity)
+-- Tune per your vehicle; this is the rear cargo area for many vans.
+LoadOffset = {
+  pos = vector3(0.0, -2.2, 0.6),
+  rot = vector3(0.0, 0.0, 0.0)
+},
+
+-- How close the coroner van must get to be considered "arrived"
+ArrivalRange = 12.0
 
     TriggerMode = 'chat', -- 'chat' or 'ox_target'
     MaxCallDistance = 15.0,
